@@ -1,12 +1,10 @@
 import {Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import {ChatService} from './chat.service';
 import {Chat} from './chat.model';
 import * as io from "socket.io-client";
 import {environment} from '../../environments/environment';
-import { combineAll } from 'rxjs/operators';
-
 const SOCKET_END_POINT=environment.SOCKET_ENDPOINT;
 @Component({
   templateUrl:'./chat.component.html',
@@ -21,7 +19,6 @@ export class ChatComponent implements OnInit,OnDestroy {
   chatForm:NgForm;
   chats:Chat[]=[]
   private subscription:Subscription
-
   constructor(public chatService:ChatService){
 
   }
