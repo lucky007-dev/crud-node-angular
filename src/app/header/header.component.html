@@ -1,0 +1,8 @@
+<mat-toolbar color="primary" class="example-spacer" *ngIf="isUserAuthenticated">
+  <ul>
+    <li *ngIf="!isUserAuthenticated"><a mat-button  routerLink="/auth" >Login</a></li>
+    <li *ngIf="!isUserAuthenticated"><a  mat-button routerLink="auth/signup" routerLinkActive="mat-accent">Sign Up</a></li>
+    <li  *ngIf="isUserAuthenticated"><button  mat-button (click)="onLogout()" >Logout</button></li>
+  </ul>
+
+</mat-toolbar>

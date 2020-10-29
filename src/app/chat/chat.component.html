@@ -1,0 +1,66 @@
+<mat-card-content
+      style="display: inline-flex; flex-direction: column; width: 100%;"
+    *ngFor="let message of chats">
+      <!-- Message content-->
+      <mat-card
+        [ngStyle]="{
+          'background-color':
+          message.creator !== userId ? 'lightslategrey' : '#536DFE',
+          color:  message.creator !== userId ? 'white' : 'white',
+          'align-self':  message.creator !== userId ? 'flex-end' : 'flex-start',
+          'text-align':  message.creator !== userId ? 'end' : 'start',
+          'border-top-right-radius':  message.creator !== userId ? '0px' : '4px',
+          'border-top-left-radius':  message.creator !== userId ? '0px' : '4px',
+          'min-width': '150px',
+          'max-width': '100%',
+          'margin-bottom': '8px',
+          padding: '16px 12px 12px 12px'
+        }"
+      >
+
+        <div>
+          <img
+          *ngIf="userId"
+          mat-card-avatar
+          [src]="'assets/account.png'"
+          width="50px"
+        />
+        </div>
+         <!-- <div style="top: 2px;position: absolute;right: 4px; font-size: 12px; opacity: 0.6">
+          {{ message.createdAt}}
+        </div> -->
+
+        <span style="overflow-wrap: break-word;">{{ message.createdAt}}</span>
+        <br>
+        <span style="overflow-wrap: break-word;">{{ message.message }}</span>
+      </mat-card>
+    </mat-card-content>
+    <div class="chat-messages-create-container">
+      <input class="chat-messages-create-input" type="text" [(ngModel)]="messageText">
+      <button  class="chat-messages-create-button" (click)="sendMessage()"> Send </button>
+    </div>
+ <!-- <div class="chat-messages">
+  <div class="chat-messages-show-container" >
+    <ul class="chat-messages-show-list" id="message-list" >
+      <li class="message" *ngFor="let message of chats">
+        <div
+          *ngIf="
+            message.creator !== userId;
+            then incoming_msg;
+            else outgoing_msg
+          "
+        ></div>
+        <ng-template #incoming_msg>
+
+                <li style="background: white;padding: 15px 10px; margin: 10px;text-align: right;">{{ message.message }}</li>
+        </ng-template>
+        <ng-template #outgoing_msg>
+          <li style="background: white;padding: 15px 10px; margin: 10px;">{{ message.message }}</li>
+        </ng-template>
+    </ul>
+  </div>
+  <div class="chat-messages-create-container">
+    <input class="chat-messages-create-input" type="text" [(ngModel)]="messageText">
+    <button  class="chat-messages-create-button" (click)="sendMessage()"> Send </button>
+  </div>
+</div> -->
